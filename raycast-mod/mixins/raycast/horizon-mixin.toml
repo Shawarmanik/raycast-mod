@@ -4,7 +4,7 @@ name = "Raycast Renderer"
 version = "0.1.0"
 
 [compatibility]
-horizon = "main"
+horizon = "1851f69bd6e5efa5c579b5cc131ba27107e63a98"
 
 [[module]]
 name = "raycast"
