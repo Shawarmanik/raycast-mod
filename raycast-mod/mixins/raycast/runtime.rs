@@ -14,35 +14,18 @@ struct RaycastUniforms {
     _padding: [f32; 3],
 }
 
-// В реальном моде это должно быть инициализировано один раз, 
-// здесь упрощенный пример для демонстрации структуры
 pub fn on_frame(game: &mut Game<'_>, _batch: &mut HudBatch, _corners: &mut Corners) {
-    // 1. Получаем доступ к WGPU устройству и очереди напрямую из объекта игры
-    let device = game.wgpu.device();
-    let queue = game.wgpu.queue();
+    // Пока просто заглушка — убеждаемся что хук вызывается
+    // Позже здесь будет логика рейкастинга
     
-    // 2. Получаем параметры камеры из состояния игры (ноль копирований)
-    let camera = &game.camera;
-    let width = camera.viewport_width;
-    let height = camera.viewport_height;
-
-    let uniforms = RaycastUniforms {
-        camera_pos: camera.position.into(),
-        aspect_ratio: width as f32 / height as f32,
-        camera_dir: camera.forward.into(),
-        fov: camera.fov,
-        max_steps: 128.0, // Оптимизация под Vega 8
+    let _uniforms = RaycastUniforms {
+        camera_pos: [0.0, 0.0, 0.0],
+        aspect_ratio: 1.0,
+        camera_dir: [0.0, 0.0, -1.0],
+        fov: 70.0,
+        max_steps: 128.0,
         _padding: [0.0; 3],
     };
-
-    // 3. Здесь будет логика:
-    // - Запись uniforms в буфер (queue.write_buffer)
-    // - Запуск compute_pass.dispatch_workgroups()
-    // - Отрисовка результата на экран (например, через добавление полноэкранного спрайта в `batch` 
-    //   или прямой блит в целевой texture view, если API Horizon это позволяет в этом хуке)
-    
-    // Пример заглушки, чтобы компилятор был доволен типами
-    let _ = (device, queue, uniforms);
 }
 
 #[cfg(test)]
@@ -51,7 +34,6 @@ mod tests {
 
     #[test]
     fn test_uniforms_size() {
-        // Убеждаемся, что структура выровнена правильно для WGPU
         assert_eq!(std::mem::size_of::<RaycastUniforms>(), 64);
     }
 }
