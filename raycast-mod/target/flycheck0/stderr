@@ -1,0 +1,5 @@
+    Checking bytemuck v1.25.2
+    Checking raycast_mod v0.1.0 (C:\Users\admin\AppData\Roaming\horizon-launcher\versions\v0.2.95\mods\raycast-mod\raycast-mod)
+error: could not compile `raycast_mod` (lib) due to 3 previous errors
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `raycast_mod` (lib test) due to 3 previous errors

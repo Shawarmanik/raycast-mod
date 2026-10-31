@@ -1,0 +1,11 @@
+[package]
+name = "raycast_mod"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+path = "mixins/raycast/runtime.rs"
+
+[dependencies]
+bytemuck = { version = "1.14", features = ["derive"] }

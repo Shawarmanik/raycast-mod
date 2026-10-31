@@ -1,0 +1,22 @@
+[mod]
+id = "raycast_mod"
+name = "Raycast Renderer"
+version = "0.1.0"
+
+[compatibility]
+horizon = "main"
+
+[[module]]
+name = "raycast"
+path = "runtime.rs"
+
+[[injection]]
+id = "raycast_hud"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_hud"
+helper = "render.rs"
+bindings = [
+  { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
+  { name = "batch", ty = "&mut horizon_client::hud::HudBatch", value = "&mut *batch" },
+  { name = "corners", ty = "&mut horizon_client::extras_hud::Corners", value = "&mut *corners" },
+]
