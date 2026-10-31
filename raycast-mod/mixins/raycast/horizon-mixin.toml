@@ -4,7 +4,8 @@ name = "Raycast Renderer"
 version = "0.1.0"
 
 [compatibility]
-horizon = "1851f69bd6e5efa5c579b5cc131ba27107e63a98"
+horizon_revision = "1851f69bd6e5efa5c579b5cc131ba27107e63a98"
+mixins_revision = "main"
 
 [[module]]
 name = "raycast"
